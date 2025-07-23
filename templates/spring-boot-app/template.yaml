@@ -198,7 +198,7 @@ spec:
       action: argocd:create-resources
       input:
         projectName: deploy-tekton-pipeline
-        appName: ${{ parameters.repoName }}-tekton-ci
+        appName: deploy-tekton-ci
         argoInstance: default
         namespace: ${{ parameters.namespace }}
         repoURL: https://github.com/${{ parameters.orgName }}/${{ parameters.repoName }}.git
