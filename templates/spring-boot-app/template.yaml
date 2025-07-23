@@ -167,9 +167,9 @@ spec:
       name: Deploy Tekton Pipeline via ArgoCD App
       action: argocd:create-resources
       input:
-        projectName: deploy-tekton-pipeline
-        appName: deploy-tekton-ci
+        projectName: new-argocd-app
+        appName: demotest-tekton-ci
         argoInstance: default
-        namespace: ${{ parameters.namespace }}
-        repoURL: https://github.com/${{ parameters.orgName }}/${{ parameters.repoName }}.git
+        namespace: demo-project
+        repoUrl: https://github.com/YogiSoni-lazy/TektonTest.git
         path: 'tekton'
