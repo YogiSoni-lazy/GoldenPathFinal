@@ -168,8 +168,8 @@ spec:
       action: argocd:create-resources
       input:
         projectName: new-argocd-app
-        appName: demotest-tekton-ci
+        appName: ${{ parameters.repoName }}-tekton-ci
         argoInstance: default
-        namespace: demo-project
-        repoUrl: https://github.com/YogiSoni-lazy/TektonTest.git
+        namespace: ${{ parameters.namespace }}
+        repoUrl: ${{ "https://github.com/" + parameters.orgName + "/" + parameters.repoName + ".git" }}
         path: 'tekton'
