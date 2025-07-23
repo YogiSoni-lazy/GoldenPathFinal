@@ -72,7 +72,24 @@ spec:
           title: k8s Namespace
           type: string 
           default: demo-project
+        argocdServer:
+          title: ArgoCD Server
+          type: string
+          #default: argocd-server.demo-project.svc:443
+          default: openshift-gitops-server.openshift-gitops.svc:80
+        argocdUsername:
+          title: ArgoCD Username
+          type: string
+          default: admin
+        argocdPassword:
+          title: ArgoCD Password
+          type: string
+          description: The password for ArgoCD login
+          default: 4BxbuHDeyr8PpLT67IgRtQZVNqWkajv1
       required:
+        - argocdServer
+        - argocdUsername
+        - argocdPassword
         - namespace
 
   steps:
@@ -176,10 +193,20 @@ spec:
         repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
         catalogInfoPath: /catalog-info.yaml
 
+    - id: deploy-tekton-pipeline
+      name: Deploy Tekton Pipeline via ArgoCD App
+      action: argocd:create-resources
+      input:
+        projectName: ${{ parameters.repoName }}-argocd-app
+        appName: ${{ parameters.repoName }}-tekton-ci
+        argoInstance: default
+        namespace: ${{ parameters.namespace }}
+        repoURL: https://github.com/${{ parameters.orgName }}/${{ parameters.repoName }}.git
+        path: 'tekton'
+        
     - id: register-api
       name: Registering the API
       action: catalog:register
       input:
         repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
         catalogInfoPath: /api-info.yaml
-
