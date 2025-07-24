@@ -10,7 +10,7 @@ metadata:
     - microservice
     - recommended
 spec:
-  owner: ysoni@redhat.com
+  owner: group:default/team-a
   type: service
 
   parameters:
