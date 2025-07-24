@@ -9,7 +9,7 @@ metadata:
     backstage.io/kubernetes-label-selector: 'app=${{ values.projectName }}'
     argocd/app-name: ${{ values.repoName }}-tekton-ci
     argocd/instance-name: default
-    argocd/namespace: openshift-gitops
+    argocd/namespace: ${{ values.namespace }}
   tags:
     - springboot
     - api
