@@ -7,9 +7,6 @@ metadata:
     backstage.io/kubernetes-id: ${{ values.projectName }}
     backstage.io/kubernetes-namespace: ${{ values.namespace }}
     backstage.io/kubernetes-label-selector: 'app=${{ values.projectName }}'
-    argocd/app-name: ${{ values.repoName }}-tekton-ci
-    argocd/instance-name: default
-    argocd/namespace: ${{ values.namespace }}
   tags:
     - springboot
     - api
