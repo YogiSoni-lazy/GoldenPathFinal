@@ -167,7 +167,7 @@ spec:
       name: Deploy Tekton Pipeline via ArgoCD App
       action: argocd:create-resources
       input:
-        projectName: new-argocd-app
+        projectName: ${{ parameters.repoName }}-argocd-tekton-pipeline
         appName: ${{ parameters.repoName }}-tekton-ci
         argoInstance: default
         namespace: ${{ parameters.namespace }}
