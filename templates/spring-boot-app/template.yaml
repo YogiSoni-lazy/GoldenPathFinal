@@ -10,9 +10,7 @@ metadata:
     - microservice
     - recommended
 spec:
-  owner: group:default/team-a
   type: service
-
   parameters:
     - title: Provide infomation about the service
       properties:
@@ -65,7 +63,6 @@ spec:
         - projectName
         - clusterid
         - apikey
-
     - title: Provide Information about deployment targets 
       properties:
         namespace:
